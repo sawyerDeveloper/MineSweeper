@@ -25,12 +25,13 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			
+			//initialize Feathers theme
 			new AeonDesktopTheme();
 			
 			//Init game
 			mineSweeper = new MineSweeperController(this);
-			
 		}
+		
 	}
 }
 

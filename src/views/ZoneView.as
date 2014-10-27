@@ -3,9 +3,13 @@ package views
 	import flash.display.BitmapData;
 	import flash.display.Shape;
 	
+	import constants.TextureConstants;
+	
 	import controllers.ZoneController;
 	
 	import feathers.controls.Label;
+	
+	import models.TextureModel;
 	
 	import starling.display.BlendMode;
 	import starling.display.Image;
@@ -20,7 +24,7 @@ package views
 		private var label : Label;
 		private var cover : Image;
 		private var border : Image;
-		private var bomb : Image;
+		private var mine : Image;
 		
 		/**
 		 * Serves as view class for each zone. Sets up view elements.
@@ -33,42 +37,66 @@ package views
 			super();
 			controller = _controller;
 			
+			var texture : Texture;
+			var bmpData:BitmapData
+			
 			//create cover tile image
-			var shape:Shape = new Shape();
-			shape.graphics.beginFill(Color.MAROON);
-			shape.graphics.drawRect(1,1, 38, 38);
-			shape.graphics.endFill();
-			var bmpData:BitmapData = new BitmapData(40, 40, true, Color.MAROON);
-			bmpData.draw(shape);
-			var texture:Texture = Texture.fromBitmapData(bmpData);
+			//First check if texture exists in our singleton
+			texture = TextureModel.getInstance().getTexture(TextureConstants.ZONE_VIEW_COVER)
+			if(texture == null){
+				var shape:Shape = new Shape();
+				shape.graphics.beginFill(Color.MAROON);
+				shape.graphics.drawRect(1,1, 38, 38);
+				shape.graphics.endFill();
+				bmpData = new BitmapData(40, 40, true, Color.MAROON);
+				bmpData.draw(shape);
+				texture = Texture.fromBitmapData(bmpData);
+				//If textire is new, save to the data model
+				TextureModel.getInstance().setTexture(TextureConstants.ZONE_VIEW_COVER, texture);
+			}
+			
 			cover = new Image(texture);
 			cover.blendMode = BlendMode.NONE
 			
 			//create bg/border
-			shape = new Shape();
-			shape.graphics.beginFill(Color.WHITE);
-			shape.graphics.lineStyle(1, Color.AQUA)
-			shape.graphics.drawRect(0,0, 40, 40);
-			shape.graphics.endFill();
-			bmpData = new BitmapData(40, 40, false, Color.WHITE);
-			bmpData.draw(shape);
-			texture = Texture.fromBitmapData(bmpData);
+			//First check if texture exists in our singleton
+			texture = TextureModel.getInstance().getTexture(TextureConstants.ZONE_VIEW_BG)
+			if(texture == null){
+				shape = new Shape();
+				shape.graphics.beginFill(Color.WHITE);
+				shape.graphics.lineStyle(1, Color.AQUA)
+				shape.graphics.drawRect(0,0, 40, 40);
+				shape.graphics.endFill();
+				bmpData = new BitmapData(40, 40, false, Color.WHITE);
+				bmpData.draw(shape);
+				texture = Texture.fromBitmapData(bmpData);
+				//If textire is new, save to the data model
+				TextureModel.getInstance().setTexture(TextureConstants.ZONE_VIEW_BG, texture);
+			}
+			
 			border = new Image(texture);
 			border.blendMode = BlendMode.NONE
 			
-			//create bomb art
-			shape = new Shape();
-			shape.graphics.beginFill(Color.RED);
-			shape.graphics.lineStyle(5, Color.YELLOW);
-			shape.graphics.drawCircle(20, 20, 10);
-			shape.graphics.endFill();
-			bmpData = new BitmapData(40, 40, true, Color.WHITE);
-			bmpData.draw(shape);
-			texture = Texture.fromBitmapData(bmpData);
-			bomb = new Image(texture);
-			bomb.smoothing = TextureSmoothing.NONE
+			//create mine art
+			//First check if texture exists in our singleton
+			texture = TextureModel.getInstance().getTexture(TextureConstants.ZONE_VIEW_MINE)
+			if(texture == null){
+				shape = new Shape();
+				shape.graphics.beginFill(Color.RED);
+				shape.graphics.lineStyle(5, Color.YELLOW);
+				shape.graphics.drawCircle(20, 20, 10);
+				shape.graphics.endFill();
+				bmpData = new BitmapData(40, 40, true, Color.WHITE);
+				bmpData.draw(shape);
+				texture = Texture.fromBitmapData(bmpData);
+				//If textire is new, save to the data model
+				TextureModel.getInstance().setTexture(TextureConstants.ZONE_VIEW_MINE, texture);
+			}
 			
-			bomb.visible = false;
+			mine = new Image(texture);
+			mine.smoothing = TextureSmoothing.NONE
+			
+			mine.visible = false;
 			//create label
 			label = new Label();
 			label.x = cover.width / 2 - 10;
@@ -79,7 +107,7 @@ package views
 			addChild(border);
 			addChild(label)
 			addChild(cover);
-			addChild(bomb);
+			addChild(mine);
 			
 		}
 		
@@ -90,9 +118,9 @@ package views
 		 * @return void
 		 * 
 		 */
-		public function showBomb(show : Boolean) : void
+		public function showMine(show : Boolean) : void
 		{
-			bomb.visible = show;
+			mine.visible = show;
 		}
 		
 		/**
@@ -127,7 +155,7 @@ package views
 		 */
 		public function resetView() : void
 		{
-			bomb.visible = false;
+			mine.visible = false;
 			cover.visible = true;
 			label.text = "";
 			label.visible = false;
