@@ -35,11 +35,11 @@ package controllers
 		public function zoneMarked() : void
 		{
 			if(model.isMarked){
-				view.showBomb(false);
+				view.showMine(false);
 				model.isMarked = false;
 				owner.mineMarked(false);
 			}else{
-				view.showBomb(true);
+				view.showMine(true);
 				model.isMarked = true;
 				owner.mineMarked(true)
 			}

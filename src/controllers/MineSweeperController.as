@@ -3,13 +3,16 @@ package controllers
 
 	import constants.StateConstants;
 	
+
 	import models.MineSweeperModel;
+	
+	import starling.display.Sprite;
 	
 	import views.MineSweeperView;
 
 	public class MineSweeperController
 	{
-		private var owner : MineSweeper;
+		private var owner : Sprite;
 		public var view : MineSweeperView;
 		private var model : MineSweeperModel;
 		private var ui : UserInterfaceController;
@@ -18,10 +21,10 @@ package controllers
 		 * Sets up the game.
 		 * Initializes view and model and UI
 		 * 
-		 * @param _owner : MineSweeper Owner serves as a sort of root or injection of a parent level class(and access to the stage).
+		 * @param _owner : Sprite Owner serves as the class responsible for creating this class.
 		 * 
 		 */
-		public function MineSweeperController(_owner : MineSweeper)
+		public function MineSweeperController(_owner : Sprite)
 		{
 			owner = _owner;
 			view = new MineSweeperView(this);
@@ -296,6 +299,7 @@ package controllers
 		 * Resets game for new game.
 		 * 
 		 * @return void
+		 * @private
 		 * 
 		 */
 		private function clearGame() : void
@@ -309,6 +313,7 @@ package controllers
 		 * Determines if user wins by analyzing known marked zones against zones with mines.
 		 * 
 		 * @return void
+		 * @private
 		 * 
 		 */
 		private function checkWin() : void
@@ -325,6 +330,5 @@ package controllers
 				}
 			}
 		}
-			
 	}
 }

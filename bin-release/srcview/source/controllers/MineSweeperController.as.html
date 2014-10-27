@@ -12,13 +12,16 @@
 
     <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">constants</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">StateConstants</span>;
     
+
     <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">models</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">MineSweeperModel</span>;
+    
+    <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">starling</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">display</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">Sprite</span>;
     
     <span class="ActionScriptReserved">import</span> <span class="ActionScriptDefault_Text">views</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">MineSweeperView</span>;
 
     <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">MineSweeperController</span>
     <span class="ActionScriptBracket/Brace">{</span>
-        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">owner</span> : <span class="ActionScriptDefault_Text">MineSweeper</span>;
+        <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">owner</span> : <span class="ActionScriptDefault_Text">Sprite</span>;
         <span class="ActionScriptReserved">public</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">view</span> : <span class="ActionScriptDefault_Text">MineSweeperView</span>;
         <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">model</span> : <span class="ActionScriptDefault_Text">MineSweeperModel</span>;
         <span class="ActionScriptReserved">private</span> <span class="ActionScriptvar">var</span> <span class="ActionScriptDefault_Text">ui</span> : <span class="ActionScriptDefault_Text">UserInterfaceController</span>;
@@ -27,10 +30,10 @@
          * Sets up the game.
          * Initializes view and model and UI
          * 
-         * @param _owner : MineSweeper Owner serves as a sort of root or injection of a parent level class(and access to the stage).
+         * @param _owner : Sprite Owner serves as the class responsible for creating this class.
          * 
          */</span>
-        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">MineSweeperController</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_owner</span> : <span class="ActionScriptDefault_Text">MineSweeper</span><span class="ActionScriptBracket/Brace">)</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">MineSweeperController</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">_owner</span> : <span class="ActionScriptDefault_Text">Sprite</span><span class="ActionScriptBracket/Brace">)</span>
         <span class="ActionScriptBracket/Brace">{</span>
             <span class="ActionScriptDefault_Text">owner</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptDefault_Text">_owner</span>;
             <span class="ActionScriptDefault_Text">view</span> <span class="ActionScriptOperator">=</span> <span class="ActionScriptReserved">new</span> <span class="ActionScriptDefault_Text">MineSweeperView</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptReserved">this</span><span class="ActionScriptBracket/Brace">)</span>;
@@ -305,6 +308,7 @@
          * Resets game for new game.
          * 
          * @return void
+         * @private
          * 
          */</span>
         <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">clearGame</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptBracket/Brace">)</span> : <span class="ActionScriptReserved">void</span>
@@ -318,6 +322,7 @@
          * Determines if user wins by analyzing known marked zones against zones with mines.
          * 
          * @return void
+         * @private
          * 
          */</span>
         <span class="ActionScriptReserved">private</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">checkWin</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptBracket/Brace">)</span> : <span class="ActionScriptReserved">void</span>
@@ -334,7 +339,6 @@
                 <span class="ActionScriptBracket/Brace">}</span>
             <span class="ActionScriptBracket/Brace">}</span>
         <span class="ActionScriptBracket/Brace">}</span>
-            
     <span class="ActionScriptBracket/Brace">}</span>
 <span class="ActionScriptBracket/Brace">}</span></pre></body>
 </html>

@@ -10,6 +10,7 @@
 		<node label="src">
 			<node icon="packageIcon" label="constants" expanded="true">
 				<node icon="actionScriptIcon" label="StateConstants.as" url="source/constants/StateConstants.as.html"/>
+				<node icon="actionScriptIcon" label="TextureConstants.as" url="source/constants/TextureConstants.as.html"/>
 			</node>
 			<node icon="packageIcon" label="controllers" expanded="true">
 				<node icon="actionScriptIcon" label="MineSweeperController.as" url="source/controllers/MineSweeperController.as.html"/>
@@ -18,6 +19,7 @@
 			</node>
 			<node icon="packageIcon" label="models" expanded="true">
 				<node icon="actionScriptIcon" label="MineSweeperModel.as" url="source/models/MineSweeperModel.as.html"/>
+				<node icon="actionScriptIcon" label="TextureModel.as" url="source/models/TextureModel.as.html"/>
 				<node icon="actionScriptIcon" label="UserInterfaceModel.as" url="source/models/UserInterfaceModel.as.html"/>
 				<node icon="actionScriptIcon" label="ZoneModel.as" url="source/models/ZoneModel.as.html"/>
 			</node>
@@ -29,8 +31,9 @@
 			<node icon="mxmlAppIcon" selected="true" label="Main.as" url="source/Main.as.html"/>
 			<node icon="actionScriptIcon" label="MineSweeper.as" url="source/MineSweeper.as.html"/>
 		</node>
+		<node label="README.md" url="source/README.md"/>
 	</nodes>
-	<zipfile label="Download source (ZIP, 677K)" url="MineSweeper.zip">
+	<zipfile label="Download source (ZIP, 678K)" url="MineSweeper.zip">
 	</zipfile>
 	<sdklink label="Download Flex SDK" url="http://www.adobe.com/go/flex451_sdk_download">
 	</sdklink>
